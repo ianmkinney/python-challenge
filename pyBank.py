@@ -66,7 +66,8 @@ with open(csvpath) as csvfile:
             profit_loss = int(profit_loss) + int(currentProfit)
 
         month_num = month_num + 1
-
+        
+csvfile.close()
 # Loop through changes to get total the divide by length of list for average. Round to 2 decimal places
 total = 0
 for change in changes:
