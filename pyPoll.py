@@ -52,4 +52,20 @@ for count in vote_counts:
 maxVotes = max(vote_counts)
 i = vote_counts.index(maxVotes)
 winner = candidates[i]
+
+# Write to txt file
+with open('pyPoll/output.txt', 'w+') as fileout: 
+    fileout.write("Election Results\n")
+    fileout.write("-----------------------------\n")
+    fileout.write(f"Total Votes: {vote_total}\n")
+    fileout.write("-----------------------------\n")
+    i = 0
+    for candidate in candidates:
+        fileout.write(f"{candidate}: {percents[i]}% ({vote_counts[i]})\n")
+        i = i + 1
+    fileout.write("-----------------------------\n")
+    fileout.write(f"Winner: {winner}\n")
+    fileout.write("-----------------------------\n")
+    
+# Print final output
 printOutput()

@@ -12,7 +12,7 @@ lowest_month = ""
 greatest_decrease = 0
 
 # Define function to print out results correctly
-def printOutput(month_num, profit_loss, average_change, greatest_decrease, greatest_increase):
+def printOutput():
     print("Financial Analysis")
     print("----------------------------------")
     print(f"Total Months: {month_num}")
@@ -25,7 +25,7 @@ def printOutput(month_num, profit_loss, average_change, greatest_decrease, great
 
 # Create csv path variable 
 
-csvpath = os.path.join('PyBank', 'Resources', 'budget_data.csv')
+csvpath = os.path.join('PyBank', 'budget_data.csv')
 
 # Open CSV file in with variable assignment
 
@@ -74,7 +74,18 @@ for change in changes:
     total = total + change
 average_change = round(total/len(changes),2)
 
+# Save as text file
+with open("pyBank/output.txt", 'w+') as fileout: 
+    fileout.write("Financial Analysis\n")
+    fileout.write("----------------------------------\n")
+    fileout.write(f"Total Months: {month_num}\n")
+    fileout.write(f"Total: ${profit_loss}\n")
+    fileout.write(f"Average Change: ${average_change}\n")
+    fileout.write(f"Greatest Increase in Profits: {greatest_month} (${greatest_increase})\n")
+    fileout.write(f"Greatest Decrease in Profits: {lowest_month} (${greatest_decrease})\n")
+    fileout.close()
+
 # Use printOutput to print final results
-printOutput(month_num, profit_loss, average_change, greatest_decrease, greatest_increase)
+printOutput()
     
     
